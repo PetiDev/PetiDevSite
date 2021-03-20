@@ -46,14 +46,15 @@ body, html {
   text-align: center;
   font-size: 30px;
   font-weight: 800;
-  color: crimson;
+  color: #dc143c;
 }
 .ftex {
   font-family: sans-serif;
   font-weight: 600;
   display: flex;
   height:100px;
-  background-color:crimson;
+
+  background: linear-gradient(to right, #c0152c, #dc243c);
   font-size:33px;
   justify-content: center;
   align-items: center;
