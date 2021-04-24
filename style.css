@@ -18,9 +18,11 @@ body{
   border-color: #e4294e;
   margin:20px;
   word-wrap: normal;
+  box-shadow: 0 0 0px 0px #2b2929;
+  transition: ease-in-out 0.2s 0s;
 }
 .container:hover{
-  transition: ease-in-out 0.2s 0s;
+  
   box-shadow: 0 0 10px 10px #2b2929;
   border-bottom: 10px solid #830c24;
   transform: translateY(-10px);
