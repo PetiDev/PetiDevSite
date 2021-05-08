@@ -11,11 +11,13 @@ body{
   display: flex;
   flex-direction: column;
 }
-
+*:focus{
+  color: orange;
+}
 .container{
   background:crimson; 
   height: 300px;
-  border-color: #e4294e;
+  border-bottom: 0px solid #830c24;
   margin:20px;
   word-wrap: normal;
   box-shadow: 0 0 0px 0px #2b2929;
@@ -31,10 +33,15 @@ h1{
   text-align: center;
   margin: 0;
 }
+#header > h1 {
+  color: #c8d6e5
+}
 .wrapper{
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
+  height: 100vh;
+  align-items: center;
 }
 .wrapper > * {
   flex-basis: 300px;
@@ -45,9 +52,6 @@ h1{
   background: #222f3e;
   width: 100vw;
   height: 50px;
-}
-#header h1 {
-  -webkit-text-stroke: 1px darkred;
 }
 li{
   padding-top:5px;
