@@ -63,13 +63,14 @@ a:hover{
   color:#86a2c0;
 }
 .footer{
-  position: relative;
+  position: fixed;
   bottom: 0;
   background: #222f3e;
   width: 100vw;
   height: fit-content;
 
 }
+
 .footer > div{
   width: 100vw;
   display: flex;
