@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+#obj {
+    position: absolute;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    background: linear-gradient(to left, #ad3,#e31911);
+    background-clip:  text;
+    color: transparent;
+}
+body {
+    transition: ease 999999999s;
+    
+}
