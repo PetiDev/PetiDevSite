@@ -8,9 +8,9 @@
     font-size: 3rem;
     font-weight: bold;
     font-family: sans-serif;
-    background: linear-gradient(to left, #ad3,#e31911);
+    background: linear-gradient(to left, #ad3,#e31911) transparent;
     background-clip:  text;
-    color: transparent;
+    color: black;
 }
 body {
     transition: ease 999999999s;
