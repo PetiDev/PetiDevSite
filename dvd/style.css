@@ -5,14 +5,11 @@
 }
 #obj {
     position: absolute;
-    font-size: 3rem;
+    font-size: 6rem;
     font-weight: bold;
     font-family: sans-serif;
-    background: linear-gradient(to left, #ad3,#e31911) transparent;
-    background-clip:  text;
-    color: black;
+    
 }
 body {
-    transition: ease 999999999s;
-    
+    background: black;
 }
