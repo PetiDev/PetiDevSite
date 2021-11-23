@@ -8,8 +8,10 @@
     font-size: 6rem;
     font-weight: bold;
     font-family: sans-serif;
+    border: solid currentColor;
     
 }
 body {
     background: black;
+    overflow: hidden;
 }
