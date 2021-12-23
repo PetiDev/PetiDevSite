@@ -1,0 +1,7 @@
+HTML
+CSS
+JS
+Node.js
+Discord.js
+express.js
+Vue.js
