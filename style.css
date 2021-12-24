@@ -1,14 +1,21 @@
+:root {
+    --clr-bg:#464b4f;
+    --clr-menu: #1B1F23;
+    --clr-btn:#e69c24;
+    --clr-main:aliceblue;
+}
 * {
     scroll-behavior: smooth;
+   
 }
 body {
-    background: rgb(216, 183, 152);
+    background: var(--clr-bg);
     overflow: hidden;
     font-family: sans-serif;
     
 }
 header {
-    background: rgb(37, 37, 37);
+    background: var(--clr-menu);
     position: fixed;
     top: 0;
     left: 0;
@@ -20,21 +27,22 @@ header {
     z-index: 10;
 }
 header > a {
-    background: rgb(37, 37, 37);
+    background: var(--clr-btn);
     text-decoration: none;
     font-size: 1.5rem;
-    color: aliceblue;
-    border: 2px solid aliceblue;
+    color: var(--clr-main);
+    border: 2px solid var(--clr-main);
     border-radius: 25px;
     width: 120%;
     padding: 10px;
     margin: 5px;
-    transition: ease-in-out 0.5s 0s;
+    transition: background ease .5s,color ease .5s;
 }
-header > a:hover {
-    background: aliceblue;
-    color: rgb(37, 37, 37);
+header > a:hover,header > a:focus {
+    background: var(--clr-main);
+    color: var(--clr-menu);
 }
+
 main {
     display: flex;
     flex-direction: column;
@@ -44,8 +52,9 @@ main {
     flex: 0 0;
 }
 .bg {
-    background-color: azure;
-    display: grid;
+    background-color: var(--clr-main);
+    display: flex;
+    flex-direction: column;
     border-radius: 10px;
     height: 100%;
     padding: 20px;   
@@ -63,6 +72,38 @@ main {
 }
 .home > h1 {
     font-size: 2.9rem;
+}
+.about {
+    align-items: center;
+}
+.about > * {
+    width: fit-content;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline: 2px solid var(--clr-btn);
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.card  a {
+    text-decoration: none;
+    height: 1.5ch;
+    
+    color: var(--clr-btn);
+    background: linear-gradient(90deg, var(--clr-btn) 10%, #705228);
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+    background-position:left bottom;
+    transition: background-size linear .1s;
+}
+.card a:hover{
+    background-size: 100% 3px;
+}
+.more > img{
+    width: 100px;
+    aspect-ratio: 16/14;
 }
 .scroll {
     overflow-y: scroll;
