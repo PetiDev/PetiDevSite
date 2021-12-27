@@ -110,7 +110,7 @@ main a:hover{
 }
 
 
-@media screen, (width < 800px) {
+@media screen and (orientation:portrait) {
     :root{
         --width-menu: 0rem
     }
