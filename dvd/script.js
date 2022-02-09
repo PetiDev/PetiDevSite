@@ -1,3 +1,4 @@
+const curr = document.querySelector("#currentClr")
 const obj = document.getElementById("obj");
 let px = 0;
 let py = 0;
@@ -7,8 +8,13 @@ let vy = 1;
 function rndNum(min, max) {
     return Math.round(Math.random()*(max - min) + min)
 }
+function rndClr(){
+    return `hsl(${rndNum(0, 360)},${rndNum(50, 100)}%,${rndNum(35, 100)}%)`
+}
 function changeClr() {
-    return obj.style.color = `hsl(${rndNum(0, 360)},${rndNum(50, 100)}%,${rndNum(35, 100)}%)`
+    let clr = rndClr()
+    curr.innerText = clr;
+    return obj.style.color = clr
 }
 changeClr()
 

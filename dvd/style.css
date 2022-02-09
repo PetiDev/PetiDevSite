@@ -7,11 +7,20 @@
     position: absolute;
     font-size: 6rem;
     font-weight: bold;
-    font-family: sans-serif;
+    
     border: solid currentColor;
     
 }
 body {
-    background: black;
-    overflow: hidden;
+    font-family: sans-serif;
+    background: #333;
+}
+.currentClr{
+    font-size: 2rem;
+    opacity: .5;
+    color: black;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
