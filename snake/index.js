@@ -1,27 +1,35 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const points = document.querySelector("#display>p")
+const snakeSize = 7 // how many pixel is the snake
+const stepSize = snakeSize + 1 // how many pixels to move in one direction
+const updateSpeed = 200 // ms
 
-
-let snake = [[50, 50], [50, 50], [50, 50]] // [[x,y], [x,y], ...]
+let snake = [[stepSize*7, stepSize*7], [stepSize*7, stepSize*7], [stepSize*7, stepSize*7]] // [[x,y], [x,y], ...]
 let direction = "up" // up, down, left, right 
 let inGame = false
 let foodPosition = []
 
+
 document.addEventListener("keydown", ({ key }) => {
+    console.log(key);
     switch (key) {
         case " ":
             start()
             break;
+        case 'ArrowUp':
         case 'w':
             direction = "up"
             break;
+        case 'ArrowDown':
         case 's':
             direction = "down"
             break;
+        case 'ArrowLeft':
         case 'a':
             direction = "left"
             break;
+        case 'ArrowRight':
         case 'd':
             direction = "right"
             break;
@@ -36,19 +44,19 @@ function move(direction) {
     switch (direction) {
         case "up":
             moveBody()
-            snake[0][1] -= 8
+            snake[0][1] -= stepSize
             break;
         case "down":
             moveBody()
-            snake[0][1] += 8
+            snake[0][1] += stepSize
             break;
         case "left":
             moveBody()
-            snake[0][0] -= 8
+            snake[0][0] -= stepSize
             break;
         case "right":
             moveBody()
-            snake[0][0] += 8
+            snake[0][0] += stepSize
             break;
 
         default:
@@ -67,19 +75,20 @@ function eat(food) {
     switch (food) {
         default:
             points.innerText = Number(points.innerText) + 1
-            foodPosition = [rndNum(0, canvas.width), rndNum(0, canvas.height)]
+            generateFood()
             snake.push([-1, -1])
             break
     }
 }
 function spawnFood() {
-    ctx.beginPath()
-    ctx.lineWidth = "5"
-    ctx.strokeStyle = "red"
-    ctx.rect(foodPosition[0], foodPosition[1], 2, 2)
-    ctx.stroke()
-}
 
+    ctx.fillStyle = "red"
+    ctx.fillRect(foodPosition[0], foodPosition[1], snakeSize, snakeSize)
+}
+function generateFood() {
+    foodPosition = [Math.round(rndNum(0, canvas.width / stepSize)) * stepSize, Math.round(rndNum(0, canvas.height / stepSize)) * stepSize]
+    //foodPosition = [0,0]
+}
 function die(dieCode) {
     inGame = false
     let reason = ""
@@ -95,60 +104,53 @@ function die(dieCode) {
 }
 function start() {
     points.innerText = 0
-    snake = [[50, 50], [50, 50], [50, 50]]
-    foodPosition = [rndNum(0, canvas.width), rndNum(0, canvas.height)]
+    snake = [[stepSize*7, stepSize*7], [stepSize*7, stepSize*7], [stepSize*7, stepSize*7]]
+    generateFood()
     inGame = true
     console.log(foodPosition);
 }
 setInterval(() => {
     if (!inGame) return;
 
+    // clear screen
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    //clear screen
-    ctx.beginPath()
-    ctx.lineWidth = "1"
-    ctx.strokeStyle = "black"
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.stroke()
-
+    // food spawn, eat
     spawnFood()
-    if (foodPosition[0] - 6 < snake[0][0] && snake[0][0] < foodPosition[0] + 6 && foodPosition[1] - 6 < snake[0][1] && snake[0][1] < foodPosition[1] + 6) eat("asd");
-
-
-    if (!searchForArray()) {
-        console.log("bbooom");
-        die("self")
-    }
+    if (foodPosition[0] - (snakeSize / 2) < snake[0][0] && snake[0][0] < foodPosition[0] + (snakeSize / 2) && foodPosition[1] - (snakeSize / 2) < snake[0][1] && snake[0][1] < foodPosition[1] + (snakeSize / 2)) eat("apple");
 
     //head to direction
     move(direction)
     snake.forEach(node => {
-        ctx.beginPath()
-        ctx.lineWidth = "5"
-        ctx.strokeStyle = "#1F6E35"
-        ctx.rect(node[0], node[1], 2, 2)
-        ctx.stroke()
+        ctx.fillStyle = "#1F6E35"
+        ctx.fillRect(node[0], node[1], snakeSize, snakeSize)
     })
-    if (snake[0][0] < 0 || snake[0][0] > canvas.width || snake[0][1] < 0 || snake[0][1] > canvas.height) die("wall");
 
-}, 300);
+    // detect colision
+    if (!searchForArray()) {
+        console.log("bbooom");
+        die("self")
+    }
+    if (snake[0][0] < 0 || snake[0][0] > canvas.width - snakeSize || snake[0][1] < 0 || snake[0][1] > canvas.height - snakeSize) die("wall");
+
+}, updateSpeed);
 
 
 // random number
 function rndNum(min, max) {
     return Math.round(Math.random() * (max - min) + min)
 }
-function searchForArray(needle){
-    needle = snake[0]
-    let haystack = snake.slice(2,snake.length-1)
+function searchForArray() {
+    let needle = snake[0]
+    let haystack = snake.slice(2, snake.length - 1)
     var i, j, current;
-    for(i = 0; i < haystack.length; ++i){
-      if(needle.length === haystack[i].length){
-        current = haystack[i];
-        for(j = 0; j < needle.length && needle[j] === current[j]; ++j);
-        if(j === needle.length)
-          return i;
-      }
+    for (i = 0; i < haystack.length; ++i) {
+        if (needle.length === haystack[i].length) {
+            current = haystack[i];
+            for (j = 0; j < needle.length && needle[j] === current[j]; ++j);
+            if (j === needle.length)
+                return i;
+        }
     }
     return -1;
-  }
+}
