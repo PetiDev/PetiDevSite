@@ -1,15 +1,23 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
-const points = document.querySelector("#display>p")
+const points = document.querySelector("header>#score")
+const specialFoodRespawnDisplay = document.querySelector("header>#specialFoodRespawn")
 const snakeSize = 7 // how many pixel is the snake
 const stepSize = snakeSize + 1 // how many pixels to move in one direction
-const updateSpeed = 200 // ms
+const specialFoods = ["speed"]
 
-let snake = [[stepSize*7, stepSize*7], [stepSize*7, stepSize*7], [stepSize*7, stepSize*7]] // [[x,y], [x,y], ...]
+let timeBetweenUpdates = 200 // ms
+let snake = [[stepSize * 7, stepSize * 7], [stepSize * 7, stepSize * 7], [stepSize * 7, stepSize * 7]] // [[x,y], [x,y], ...]
 let direction = "up" // up, down, left, right 
 let inGame = false
 let foodPosition = []
+let specialFood = []
+let effect = null
+let effectTime = 0; //moves
+let specialFoodRespawnTime = 50; //moves
+let originalSpecialFoodRespavnTime = 50; //moves
 
+let timeing;
 
 document.addEventListener("keydown", ({ key }) => {
     console.log(key);
@@ -73,6 +81,17 @@ function moveBody() {
 function eat(food) {
     console.log("Nom Nom");
     switch (food) {
+        case "speed":
+            effect = "speed"
+            effectTime = 40
+            changeGameSpeed(timeBetweenUpdates / 2)
+            specialFood = []
+            break
+        case "apple":
+            points.innerText = Number(points.innerText) + 1
+            generateFood()
+            snake.push([-1, -1])
+            break
         default:
             points.innerText = Number(points.innerText) + 1
             generateFood()
@@ -84,10 +103,21 @@ function spawnFood() {
 
     ctx.fillStyle = "red"
     ctx.fillRect(foodPosition[0], foodPosition[1], snakeSize, snakeSize)
+    if (specialFood) {
+        switch (specialFood[2]) {
+            case "speed":
+                ctx.fillStyle = "blue"
+                ctx.fillRect(specialFood[0], specialFood[1], snakeSize, snakeSize)
+                break;
+        }
+    }
 }
 function generateFood() {
     foodPosition = [Math.round(rndNum(0, canvas.width / stepSize)) * stepSize, Math.round(rndNum(0, canvas.height / stepSize)) * stepSize]
     //foodPosition = [0,0]
+}
+function generateSpecialFood() {
+    specialFood = [Math.round(rndNum(0, canvas.width / stepSize)) * stepSize, Math.round(rndNum(0, canvas.height / stepSize)) * stepSize, randomFromArray(specialFoods)]
 }
 function die(dieCode) {
     inGame = false
@@ -104,13 +134,43 @@ function die(dieCode) {
 }
 function start() {
     points.innerText = 0
-    snake = [[stepSize*7, stepSize*7], [stepSize*7, stepSize*7], [stepSize*7, stepSize*7]]
+    snake = [[stepSize * 7, stepSize * 7], [stepSize * 7, stepSize * 7], [stepSize * 7, stepSize * 7]]
     generateFood()
+    generateSpecialFood()
     inGame = true
-    console.log(foodPosition);
+    clearInterval(timeing)
+    timeing = setInterval(game, timeBetweenUpdates);
 }
-setInterval(() => {
+function applyEffect() {
+    effectTime--
+    switch (effect) {
+        case "speed":
+            console.log(effectTime);
+            if (!effectTime) {
+                effect = null;
+                changeGameSpeed(timeBetweenUpdates)
+            }
+            break;
+
+        default:
+            break;
+    }
+}
+function changeGameSpeed(speed) {
+    clearInterval(timeing)
+    timeing = setInterval(game, speed);
+}
+function game() {
     if (!inGame) return;
+    if (effect) applyEffect();
+    specialFoodRespawnTime--
+    if (!specialFoodRespawnTime) {
+        generateSpecialFood()
+        specialFoodRespawnTime = originalSpecialFoodRespavnTime;
+    }
+    specialFoodRespawnDisplay.innerText = specialFoodRespawnTime;
+
+
 
     // clear screen
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -118,6 +178,10 @@ setInterval(() => {
     // food spawn, eat
     spawnFood()
     if (foodPosition[0] - (snakeSize / 2) < snake[0][0] && snake[0][0] < foodPosition[0] + (snakeSize / 2) && foodPosition[1] - (snakeSize / 2) < snake[0][1] && snake[0][1] < foodPosition[1] + (snakeSize / 2)) eat("apple");
+
+    // specialFood
+    if (specialFood[0] - (snakeSize / 2) < snake[0][0] && snake[0][0] < specialFood[0] + (snakeSize / 2) && specialFood[1] - (snakeSize / 2) < snake[0][1] && snake[0][1] < specialFood[1] + (snakeSize / 2)) eat(specialFood[2]);
+
 
     //head to direction
     move(direction)
@@ -132,9 +196,14 @@ setInterval(() => {
         die("self")
     }
     if (snake[0][0] < 0 || snake[0][0] > canvas.width - snakeSize || snake[0][1] < 0 || snake[0][1] > canvas.height - snakeSize) die("wall");
+}
 
-}, updateSpeed);
 
+
+//********** 
+function randomFromArray(arr) {
+    return arr[rndNum(0, arr.length - 1)]
+}
 
 // random number
 function rndNum(min, max) {

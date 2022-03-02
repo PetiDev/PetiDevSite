@@ -9,10 +9,10 @@
     <title>Snake</title>
 </head>
 <body>
-    <div id="display"> <button onclick="start()">START</button> Pontjaid: <p>0</p></div>
+    <header> <button onclick="start()">START</button> Pontjaid: <p id="score">0</p> | Speciális étel újra generálása: <p id="specialFoodRespawn">--</p> moves mulva</header>
     
     <canvas width="704px" height="504px"></canvas>
     
-    <span>Irányítás <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> vagy <kbd>▲</kbd> <kbd>▼</kbd> <kbd>◄</kbd> <kbd>►</kbd> </span>
+    <span>Irányítás <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> vagy <kbd onclick="direction = 'up'">▲</kbd> <kbd onclick="direction = 'down'">▼</kbd> <kbd onclick="direction = 'left'">◄</kbd> <kbd onclick="direction = 'right'">►</kbd> </span>
 </body>
 </html>

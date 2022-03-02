@@ -20,7 +20,7 @@ body{
 p{
     display: inline;
 }
-#display{
+header{
     margin-bottom: 30px;
     background: #4D3A0C;
     height: 30px;
@@ -34,7 +34,7 @@ button{
     background: #36332F;
     transition: ease .3s;
 }
-button:hover {
+button:hover, button:focus {
     outline-offset: -6px;
     
 }
