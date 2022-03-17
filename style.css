@@ -1,144 +1,111 @@
-:root {
-    --clr-bg: #1B1F23;
-    --clr-btn:#e69c24;
-    --clr-btn-hover: #a9721b;
-    --clr-main:aliceblue;
-    --width-menu: 10rem;
-}
+:root{
+    --clr-dark: #232423;
+    --clr-light: #FAFAFA;
+    --clr-secondary: #A32734;
 
-*, *::before, *::after {
+    --menu-width: 50px;
+}
+* {
     padding: 0;
     margin: 0;
-    scroll-behavior: smooth;
-   font-family: sans-serif;
-}
-body{
-    background: var(--clr-bg);
-    overflow: hidden;
-}
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    background: var(--clr-bg);
-    width: var(--width-menu);
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-header > a{
-    
-    background: var(--clr-btn);
-    border: 3px solid var(--clr-main);
-    width: calc(100% - 3px);
-    outline: 3px solid var(--clr-main);
-    outline-offset: -2px;
-    height: fit-content;
-    text-align: center;
-    padding-block: 1rem;
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: var(--clr-main);
-    transition: .3s ease;
-    
+    font-family: sans-serif;
+    max-width: 100%;
+    word-wrap: normal;
 }
 
-header > a:hover{
-    background: var(--clr-btn-hover);
-    outline: 3px solid var(--clr-main);
-    outline-offset: -10px;
-    
-}
-header > a:active{
-    background: var(--clr-main);
-    color: var(--clr-bg);
-    border: 3px solid var(--clr-btn)
-}
-
-main{
-    margin-left: var(--width-menu);
+body {
+    background: var(--clr-light);
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 100vh 100vh 100vh;
-    gap: 20px;
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(4,100vh);
+    place-items: center;
+    overflow-x: hidden;
 }
-main a{
-    color: var(--clr-btn);
+body > div {
+    padding: calc(var(--menu-width) + 20px);
+    width: 100%;
+    height: 100%;
+    
+}
+body > div h1 {
+    font-size: 3em;
+}
+
+a{
+    color: var(--clr-dark);
+    font-size: large;
     text-decoration: none;
-    background: linear-gradient(90deg, var(--clr-bg), var(--clr-bg));
+    background: linear-gradient(currentColor,currentColor) no-repeat;
     background-position: left bottom;
     background-size: 0% 3px;
-    background-repeat: no-repeat;
-    transition: background .3s ease-in-out;
+    transition: background ease-in .3s .5s;
 }
-main a:hover{
+a:visited{
+    color: var(--clr-dark);
+}
+a:hover{
+    transition: background ease-in .3s 0s;
     background-size: 100% 3px;
+    
 }
-.card{
-    background: var(--clr-main);
-    border-radius: 25px;
-    padding: 3rem;
+p{
+    font-size: large;
 }
-
-.home{
+menu {
+    background: var(--clr-dark);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--menu-width);
+}
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+.home > img {
+    height: 10ch;
+    margin-right: 1rem;
+}
+.home > div > h1 {
+    display: inline-block;
+}
+.home > div > h1:nth-child(2){
+    color: var(--clr-secondary);
+}
+.about{
+    background-color: #A32734;
     display: grid;
     place-items: center;
+    color: var(--clr-light);
 }
-.profile-pic{
-    aspect-ratio: 1/1;
-    max-width: 70%;
-    min-width: 100px;
+.about a{
+    color: var(--clr-light);
 }
-
-.about{
-    display: grid;
-    grid-template-columns: 1.5fr .5fr;
-    grid-template-rows: .3fr repeat(2,1.35fr);
-    gap: 1rem;
+.about a:visited{
+    color: var(--clr-light);
 }
-.about > *{
-    outline: 3px solid var(--clr-btn);
-    padding: 1rem;
-}
-.about > h1{
-    grid-column: span 2;
-    text-align: center;
-}
-.languages {
-    grid-row: span 2;
-}
-
-
-@media screen and (orientation:portrait) {
-    :root{
-        --width-menu: 0rem
+@media  (width < 950px) {
+    body > div {
+        margin-left: calc(var(--menu-width)) !important;
+        padding: 0 !important;
+        max-width: calc(100% - var(--menu-width));
     }
-    header{
-        display: none;
+}
+@media  (width < 600px) {
+    .home {
+        flex-direction: column !important;
     }
-    main a{
-        text-decoration: none;
-        text-decoration: underline;
-        color: var(--clr-btn);
+    .home > div {
+        text-align: center !important;
     }
-    body{
-        overflow: scroll;
+    *{
+        word-wrap: break-word !important;
+        
+       
     }
-    main{
-        gap: 30px;
-    }
-    .card{
-        padding: 0rem;
-        border-radius: 0;    
     
-    }
-    .card > *{
-        padding: .5rem;
-    }
-}
-
-
-.scroll {
-    overflow-y: scroll;
 }
