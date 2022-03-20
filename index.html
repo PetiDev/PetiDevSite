@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="hu">
 
 <head>
@@ -5,39 +6,104 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
     <title></title>
 </head>
 
 <body>
     <menu>
-        <button>></button>
+        <a href="#home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 30 30">
+                <path
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg></a>
+        <a href="#about"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 30 30">
+                <path
+                    d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+            </svg></a>
+        <a href="#languages"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 30 30">
+                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg></a>
+        <a href="#customize"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 30 30">
+                <path
+                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg></a>
     </menu>
-    <div class="home">
+    <div id="home" class="home">
 
         <img src="./img/profile.png" alt="Profilkép">
         <div>
             <h1>Peti<h1>Dev</h1>
             </h1>
             <h3>Kezdő szoftverfejlesztő és tesztelő</h3>
+            <a href="https://github.com/petidev" target="_blank"><img src="./img/github.png" alt="GitHub"></a>
+            <a href="https://discord.com/users/423093436313501696" target="_blank"><img src="./img/discord.png"
+                    alt="Discord"></a>
         </div>
     </div>
-    <div class="about">
+    <div id="about" class="about">
         <h1>Rólam</h1>
         <p>Az első weboldal amin dolgoztam egy nyelvtan órára készült.<br> A csapattársam azt mondta, hogy
-            <q>Csináljunk egy weboldalt PPT helyett</q> és én azt mondtam <q>Miért ne?</q>.</p>
+            <q>Csináljunk egy weboldalt PPT helyett</q> és én azt mondtam <q>Miért ne?</q>.
+        </p>
         <p>Jelenlegileg középiskolában tanulok</p>
         <div>
             <ul>
                 <h3>Munkáim</h3>
-                <li><a href="https://petidev.github.io/PetiDevSite/snake" target="mySite">Snake</a></li>
-                <li><a href="https://petidev.github.io/tictactoe" target="mySite">TicTacToe</a></li>
-                <li><a href="https://petidev.github.io/PetiDevSite/dvd" target="mySite">DVD</a></li>
-                <li><a href="https://petidev.github.io/horvathpeter" target="mySite">Valami nagyon régi</a></li>
+                <li><a underline href="https://petidev.github.io/PetiDevSite/snake" target="mySite">Snake</a></li>
+                <li><a underline href="https://petidev.github.io/tictactoe" target="mySite">TicTacToe</a></li>
+                <li><a underline href="https://petidev.github.io/PetiDevSite/dvd" target="mySite">DVD</a></li>
+                <li><a underline href="https://petidev.github.io/horvathpeter" target="mySite">Valami nagyon régi</a>
+                </li>
             </ul>
         </div>
     </div>
-    <div></div>
-    <div></div>
+    <div id="languages" class="languagesWrapper">
+        <h1>Programozási nyelvek</h1>
+        <dir class="languages">
+            <div class="card">
+                <img src="./img/javascript.svg" alt="JavaScript logo">
+                <h1>JavaScript</h1>
+            </div>
+            <div class="card">
+                <img src="./img/html.svg" alt="HTML logo">
+                <h1>HTML</h1>
+            </div>
+            <div class="card">
+                <img src="./img/css.svg" alt="CSS logo">
+                <h1>CSS</h1>
+            </div>
+            <div class="card">
+                <img src="./img/vue.svg" alt="VUE logo">
+                <h1>VUE</h1>
+            </div>
+            <div class="card">
+                <img src="./img/python.svg" alt="Python logo">
+                <h1>Python</h1>
+            </div>
+            <div class="card">
+                <img src="./img/nodejs.svg" alt="NODE.js logo">
+                <h1>NODE.js</h1>
+            </div>
+        </dir>
+    </div>
+    <div id="customize">
+        
+        <dir class="customize">
+            <h1>Még dolgozok rajta</h1>
+            <form class="hue">
+                <h2>HUE</h2>
+                <div>
+                    <input class="hueSlider" id="hueSlider" type="range" min="0" max="360"
+                        oninput="hueDirect.value=hueSlider.value;hueChange(hueSlider.value)" />
+                    <input class="hueDirect" id="hueDirect" type="number" value="0" min="0" max="360"
+                        oninput="hueSlider.value=hueDirect.value;hueChange(hueDirect.value)" />
+                </div>
+                <button onclick="hueDirect.value=0; hueSlider.value = 0,hueChange(0)">RESET</button>
+                <sub>Valamiért felmennek felülre a navigációs gombok ha használja. Ha ráfrissít az oldalra akkor
+                    megjavul.</sub>
+            </form>
+        </dir>
+    </div>
 </body>
 
 </html>
