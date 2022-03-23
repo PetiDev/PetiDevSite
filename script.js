@@ -1,21 +1,21 @@
 let phase = 0;
 let isActive = false;
-let combo = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"]
+let combo = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
 addEventListener("keydown", ({ key }) => {
 
-    let next = combo[phase]
+    let next = combo[phase];
     if (key == next) {
-        phase++
+        phase++;
         if (next == "a") {
-            phase = 0
+            phase = 0;
             if (isActive) {
-                document.body.style.animation = "";
-                
-            }else{
-                isActive = true
-                document.body.style.animation = "huerotate infinite forwards 20s";
+                document.body.style.animation = ""
+
+            } else {
+                isActive = true;
+                document.body.style.animation = "huerotate infinite forwards 20s"
             }
-            
+
         }
     } else {
         phase = 0
@@ -23,7 +23,7 @@ addEventListener("keydown", ({ key }) => {
 
 })
 
-function hueChange(param){
+function hueChange(param) {
     console.log(param);
-    document.body.style.filter = `hue-rotate(${param}deg)`
+    document.body.style.filter = `hue-rotate(${param}deg)`;
 }
