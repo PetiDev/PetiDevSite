@@ -218,13 +218,19 @@ menu svg{
 }
   
 
-
 @keyframes huerotate {
     0%{
         filter: hue-rotate(0deg);
     }
     100%{
         filter: hue-rotate(360deg);
+    }
+}
+
+@media (height < 800px) {
+    .about{
+        overflow-y: scroll !important;
+        padding-bottom: 100px;
     }
 }
 
