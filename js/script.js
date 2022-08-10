@@ -9,12 +9,13 @@ addEventListener("keydown", ({ key }) => {
         if (next == "a") {
             phase = 0;
             if (isActive) {
-                document.body.style.animation = ""
+                document.querySelector("html").style.animation = ``
                 phase = 0;
 
             } else {
                 isActive = true;
-                document.body.style.animation = "huerotate infinite forwards 20s"
+                console.log("asd");
+                document.querySelector("html").style.animation = `huerotate infinite forwards 20s`
             }
 
         }
@@ -24,7 +25,17 @@ addEventListener("keydown", ({ key }) => {
 
 })
 
-function hueChange(param) {
-    console.log(param);
-    document.body.style.filter = `hue-rotate(${param}deg)`;
+const allElement = document.querySelectorAll('*')
+
+function hueChange(param) { //DIR  BODY
+    document.querySelector("html").style.filter = `hue-rotate(${param}deg)`
+}
+
+function toggleOutline(checkbox) {
+    if (checkbox.checked) {
+        allElement.forEach((node) => { node.style.outline = "rgba(0,80,20,.5) 3px solid" })
+    } else {
+        allElement.forEach((node) => { node.style.outline = "" });
+//if (node.classList.value != "navButton")
+    }
 }
