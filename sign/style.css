@@ -1,0 +1,23 @@
+*{
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+svg{
+    max-height: 100vh;
+}
+path{
+    stroke: currentColor;
+    stroke-width: 1px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-dasharray: 396;
+    stroke-dashoffset: 396;
+    animation: sign 4s ease;
+    animation-fill-mode: forwards ;
+}
+@keyframes sign {
+    to {
+        stroke-dashoffset: 0 ;
+    }
+}
