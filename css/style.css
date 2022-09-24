@@ -21,6 +21,7 @@ body {
     grid-template-rows: repeat(4, 1fr);
     height: 400vh;
     width: 100%;
+    background: #000;
 
     
 }
@@ -78,6 +79,7 @@ nav {
     display: grid;
     gap: 5px;
     grid-template-rows: repeat(4, var(--menu-width));
+    z-index: 999;
 }
 nav a {
     color: var(--clr-light);
@@ -103,6 +105,16 @@ nav a:hover, nav a:focus {
 }
 nav a:active {
     color: var(--clr-secondary);
+}
+
+.hidden{
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: ease .5s;
+}
+.show{
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .small{
@@ -252,5 +264,20 @@ nav a:active {
     dir{
         padding-left: calc(var(--menu-width) / 2);
     }
+    .hidden{
+        opacity: 1;
+        transition: unset;
+        transform: translateX(0);
+    }
     
+}
+@media (prefers-reduced-motion){
+    .hidden{
+        opacity: 1;
+        transition: ease 0s;
+        transform: translateX(0);
+    }
+    nav a:hover, nav a:focus {
+        transform: rotate(0);
+    }
 }
