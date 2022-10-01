@@ -23,6 +23,7 @@ body {
     width: 100%;
     background: #000;
 
+    animation: 6s linear forwards;
     
 }
 
@@ -280,4 +281,62 @@ nav a:active {
     nav a:hover, nav a:focus {
         transform: rotate(0);
     }
+}
+
+
+#boom{
+    position: absolute;
+    top: 20%;
+    left: var(--menu-width);
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    animation: 6s linear ;
+    z-index: 999999;
+}
+@keyframes crash {
+    0%{
+        translate: +100vw;
+        background-image: url("../img/moon.gif");
+    }
+    49%{
+        background-image: url("../img/moon.gif");
+    }
+    50%{
+        translate: 0;
+        background-image: url("../img/boom.gif");
+    }
+    60%{
+        background-image: url("../img/boom.gif");
+    }
+    61%{
+        background-image: none;
+    }
+}
+@keyframes break {
+    50%{
+        rotate: 0deg;
+        color: white;
+    }
+    52%{
+        rotate: 1deg;
+        color: red;
+    }
+    54%{
+        rotate: -1deg;
+    }
+    56%{
+        rotate: 2deg;
+    }
+    58%{
+        rotate: -2deg;
+    }
+    60%{
+        rotate: 6deg;
+        color: white;
+    }
+    100%{
+        rotate: 6deg;
+    }
+
 }

@@ -1,3 +1,4 @@
+
 const observer = new IntersectionObserver((entries)=>{
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -12,9 +13,10 @@ const hiddenElements = document.querySelectorAll('.hidden')
 hiddenElements.forEach(element => observer.observe(element));
 
 
-
-
-
+function boom() {
+    document.body.style.animationName = "break"
+    document.getElementById("boom").style.animationName = "crash"
+}
 
 let phase = 0;
 let isActive = false;
@@ -45,7 +47,7 @@ addEventListener("keydown", ({ key }) => {
 
 const allElement = document.querySelectorAll('*')
 
-function hueChange(param) { //DIR  BODY
+function hueChange(param) {
     document.querySelector("html").style.filter = `hue-rotate(${param}deg)`
 }
 
@@ -54,6 +56,13 @@ function toggleOutline(checkbox) {
         allElement.forEach((node) => { node.style.outline = "rgba(0,80,20,.5) 3px solid" })
     } else {
         allElement.forEach((node) => { node.style.outline = "" });
-//if (node.classList.value != "navButton")
     }
 }
+console.log(`
+ _____    __   _ 
+|  __ \\   | | (_)
+| |__) |__| |_ _ 
+|  ___/ _ \\ __| |
+| |  |  __/ |_| |
+|_|   \\___|\\__|_|
+`);
