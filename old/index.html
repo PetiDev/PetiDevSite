@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!--2022. 08. 10.-->
+
+<head>
+<!--Meta-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:url" content="https://petidev.tk" />
+    <meta property="og:site_name" content="PetiDev" />
+    <meta property="og:title" content="PetiDev" />
+    <meta property="og:image" href="./img/logo-minimal.svg" />
+    <meta property="og:description" content="Ez a Dev oldalam, mert mindenkinek kell." />
+    <meta name="description" content="Ez a Dev oldalam, mert mindenkinek kell." />
+
+<!---->
+    <link rel="shortvut icon" href="./img/logo-minimal.svg" type="image/svg+xml">
+
+<!--CSS-->
+    <link rel="stylesheet" href="./css/style.css">
+
+<!--JavaScript-->
+    <script src="./js/script.js" defer></script>
+    <script src="./js/nameAnimation.js" defer></script>
+
+    <title>PetiDev</title>
+</head>
+
+<body>
+    <nav>
+        <a href="#home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 30 30">
+                <title>Főoldal</title>
+                <path
+                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg></a>
+        <a href="#about"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 30 30">
+                <title>Rólam</title>
+                <path
+                    d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+            </svg></a>
+        <a href="#languages"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 30 30">
+                <title>Programozási nyelvek</title>
+                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg></a>
+        <a href="#customize"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-3 -3 30 30">
+                <title>Személyre szabás</title>
+                <path
+                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg></a>
+    </nav>
+    <dir id="home" class="hidden">
+        <div >
+            <img src="./img/profile.svg" alt="Profilkép">
+            <div>
+                <h1 id="name">Peti <h1 id="name2"></h1>
+                </h1>
+                <h2>Tanuló szoftverfejlesztő és tesztelő</h2>
+                <a class="small" github href="https://github.com/PetiDev/" target="_blank"><img src="./img/github.svg"
+                        alt="github"></a>
+                <a discord class="small" href="javascript:navigator.clipboard.writeText('@<Peti/>#1182')"><img
+                        src="./img/discord.svg" alt="discord"></a>
+            </div>
+
+        </div>
+    </dir>
+
+    <dir id="about" class="hidden">
+        <h1>Rólam</h1>
+        <h3>Az első weboldal amin dolgoztam egy nyelvtan órára készült.
+            A csapattársam azt mondta, hogy "Csináljunk egy weboldalt PPT helyett" és én azt mondtam "Miért ne?".</h3>
+        <p onclick="boom()">Jelenleg középiskolában tanulok</p>
+        <section>
+            <h2>Néhány munkám</h2>
+            <ul>
+                <li><a underline href="https://petidev.github.io/PetiDevSite/snake" target="_blank">Snake</a></li>
+                <li><a underline href="https://petidev.github.io/tictactoe" target="_blank">TicTacToe</a></li>
+                <li><a underline href="https://petidev.github.io/horvathpeter" target="_blank">Valami nagyon régi</a>
+                </li>
+                <li><a underline href="https://petidev.github.io/PetiDevSite/dvd" target="_blank">DVD</a></li>
+                <li><a underline href="https://petidev.github.io/pong/" target="_blank">Pong</a></li>
+            </ul>
+        </section>
+    </dir>
+
+    <dir id="languages" class="hidden">
+        <h1>Programozási nyelvek</h1>
+        <div id="languages-wrapper">
+            <div>
+                <img src="./img/javascript.svg" alt="JavaScript logo">
+                <p>JavaScript</p>
+            </div>
+            <div>
+                <img src="./img/html.svg" alt="HTML logo">
+                <p>HTML</p>
+            </div>
+            <div>
+                <img src="./img/css.svg" alt="CSS logo">
+                <p>CSS</p>
+            </div>
+            <div>
+                <img src="./img/vue.svg" alt="VUE logo">
+                <p>VUE</p>
+            </div>
+            <div>
+                <img src="./img/python.svg" alt="Python logo">
+                <p>Python</p>
+            </div>
+            <div>
+                <img src="./img/nodejs.svg" alt="NODE.js logo">
+                <p>NODE.js</p>
+            </div>
+        </div>
+    </dir>
+    <dir id="customize" class="hidden">
+        <h1>Még dolgozok rajta</h1>
+        <form class="hue">
+            <h2>HUE</h2>
+            <div>
+                <input id="hueSlider" type="range" value="0" min="0" max="360"
+                    oninput="hueDirect.value=hueSlider.value;hueChange(hueSlider.value)" />
+                <input id="hueDirect" type="number" value="0" min="0" max="360"
+                    oninput="hueSlider.value=hueDirect.value;hueChange(hueDirect.value)" />
+            </div>
+            <button onclick="hueDirect.value=0; hueSlider.value = 0,hueChange(0)">RESET</button>
+        </form>
+
+        <form id="outliner">
+            <h2>Körvonalak</h2>
+            <input value="0" onclick="toggleOutline(outlineCheckbox)" type="checkbox" id="outlineCheckbox"><label
+                for="outlineCheckbox"> Mutatás</label>
+        </form>
+
+    </dir>
+    <div id="boom"></div>
+</body>
+
+</html>

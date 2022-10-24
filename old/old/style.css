@@ -1,0 +1,144 @@
+:root {
+    --clr-bg: #1B1F23;
+    --clr-btn:#e69c24;
+    --clr-btn-hover: #a9721b;
+    --clr-main:aliceblue;
+    --width-menu: 10rem;
+}
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+   font-family: sans-serif;
+}
+body{
+    background: var(--clr-bg);
+    overflow: hidden;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: var(--clr-bg);
+    width: var(--width-menu);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+header > a{
+    
+    background: var(--clr-btn);
+    border: 3px solid var(--clr-main);
+    width: calc(100% - 3px);
+    outline: 3px solid var(--clr-main);
+    outline-offset: -2px;
+    height: fit-content;
+    text-align: center;
+    padding-block: 1rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--clr-main);
+    transition: .3s ease;
+    
+}
+
+header > a:hover{
+    background: var(--clr-btn-hover);
+    outline: 3px solid var(--clr-main);
+    outline-offset: -10px;
+    
+}
+header > a:active{
+    background: var(--clr-main);
+    color: var(--clr-bg);
+    border: 3px solid var(--clr-btn)
+}
+
+main{
+    margin-left: var(--width-menu);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100vh 100vh 100vh;
+    gap: 20px;
+}
+main a{
+    color: var(--clr-btn);
+    text-decoration: none;
+    background: linear-gradient(90deg, var(--clr-bg), var(--clr-bg));
+    background-position: left bottom;
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+    transition: background .3s ease-in-out;
+}
+main a:hover{
+    background-size: 100% 3px;
+}
+.card{
+    background: var(--clr-main);
+    border-radius: 25px;
+    padding: 3rem;
+}
+
+.home{
+    display: grid;
+    place-items: center;
+}
+.profile-pic{
+    aspect-ratio: 1/1;
+    max-width: 70%;
+    min-width: 100px;
+}
+
+.about{
+    display: grid;
+    grid-template-columns: 1.5fr .5fr;
+    grid-template-rows: .3fr repeat(2,1.35fr);
+    gap: 1rem;
+}
+.about > *{
+    outline: 3px solid var(--clr-btn);
+    padding: 1rem;
+}
+.about > h1{
+    grid-column: span 2;
+    text-align: center;
+}
+.languages {
+    grid-row: span 2;
+}
+
+
+@media screen and (orientation:portrait) {
+    :root{
+        --width-menu: 0rem
+    }
+    header{
+        display: none;
+    }
+    main a{
+        text-decoration: none;
+        text-decoration: underline;
+        color: var(--clr-btn);
+    }
+    body{
+        overflow: scroll;
+    }
+    main{
+        gap: 30px;
+    }
+    .card{
+        padding: 0rem;
+        border-radius: 0;    
+    
+    }
+    .card > *{
+        padding: .5rem;
+    }
+}
+
+
+.scroll {
+    overflow-y: scroll;
+}
