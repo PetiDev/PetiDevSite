@@ -199,8 +199,10 @@ a:active::before {
     .link section:before {
         display: none;
     }
-
     
+    h2{
+        font-size: 3rem;
+    }
 }
 @media (max-width:1380px) {
     .scroll-x {
