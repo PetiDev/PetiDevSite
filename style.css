@@ -140,6 +140,7 @@ a:active::before {
 .link section {
     position: relative;
     padding: 1rem;
+    padding-right: 0;
 
 }
 
@@ -201,12 +202,17 @@ a:active::before {
     }
 
     h1{
-        font-size: 4.5rem;
+        font-size: 4rem;
     }
     
     h2{
         font-size: 3rem;
     }
+
+    .name{
+        line-height: 3.3rem;
+    }
+    
 }
 @media (max-width:1380px) {
     .scroll-x {
