@@ -21,7 +21,11 @@ html {
 body {
     min-height: 100vh;
 }
-
+main{
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: min-content repeat(2,1fr);
+}
 h1 {
     font-size: 5rem;
     font-weight: bolder;
@@ -33,7 +37,7 @@ h2 {
 }
 
 li {
-    list-style: square;
+    list-style: none;
 }
 
 a {
@@ -77,21 +81,20 @@ a:active::before {
     height: 100%;
 }
 
-.section {
+main > div {
     display: grid;
     position: relative;
     padding-block: 2rem;
     padding-left: 1rem;
 }
 
-.section::before {
+main > div::before {
     content: "";
     position: absolute;
     left: 0;
     height: 100%;
     width: 3px;
     background-color: currentColor;
-
 }
 
 .text-outline {
@@ -109,7 +112,7 @@ a:active::before {
 
 .name {
     grid-template-columns: repeat(2, 1fr);
-    line-height: 4rem;
+    line-height: 4.3rem;
     color: var(--clr-primary);
 }
 
@@ -129,9 +132,11 @@ a:active::before {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background-color: rgba(0, 0, 0, .3);
+
 }
 
-.link-wrapper {
+.link dir {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
@@ -156,13 +161,18 @@ a:active::before {
 .prglang {
     color: var(--clr-primary);
 }
-
-.scroll-x {
-    overflow-x: auto;
+.prglang img{
+    aspect-ratio: 1/1;
+}
+.prglang section{
+    padding-bottom: 1rem;
     display: flex;
     height: 20rem;
     gap: 1rem;
-    justify-content: center;
+}
+
+.scroll-x {
+    overflow-x: auto;
 }
 
 * {
@@ -188,7 +198,7 @@ a:active::before {
 @media (max-width: 710px) {
 
     .name,
-    .link-wrapper {
+    .link dir {
         grid-template-columns: 1fr;
     }
 
@@ -213,9 +223,4 @@ a:active::before {
         line-height: 3.3rem;
     }
     
-}
-@media (max-width:1380px) {
-    .scroll-x {
-        justify-content: inherit;
-    }
 }

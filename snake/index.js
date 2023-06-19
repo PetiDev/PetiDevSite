@@ -1,21 +1,16 @@
 const canvas = document.querySelector("canvas")
 const ctx = canvas.getContext("2d")
 const points = document.querySelector("header>#score")
-const specialFoodRespawnDisplay = document.querySelector("header>#specialFoodRespawn")
 const snakeSize = 7 // how many pixel is the snake
 const stepSize = snakeSize + 1 // how many pixels to move in one direction
-const specialFoods = ["speed"]
 
 let timeBetweenUpdates = 200 // ms
 let snake = [[stepSize * 7, stepSize * 7], [stepSize * 7, stepSize * 7], [stepSize * 7, stepSize * 7]] // [[x,y], [x,y], ...]
 let direction = "up" // up, down, left, right 
 let inGame = false
 let foodPosition = []
-let specialFood = []
 let effect = null
 let effectTime = 0; //moves
-let specialFoodRespawnTime = 50; //moves
-let originalSpecialFoodRespavnTime = 50; //moves
 
 let timeing;
 
@@ -81,12 +76,6 @@ function moveBody() {
 function eat(food) {
     console.log("Nom Nom");
     switch (food) {
-        case "speed":
-            effect = "speed"
-            effectTime = 40
-            changeGameSpeed(timeBetweenUpdates / 2)
-            specialFood = []
-            break
         case "apple":
             points.innerText = Number(points.innerText) + 1
             generateFood()
@@ -103,22 +92,13 @@ function spawnFood() {
 
     ctx.fillStyle = "red"
     ctx.fillRect(foodPosition[0], foodPosition[1], snakeSize, snakeSize)
-    if (specialFood) {
-        switch (specialFood[2]) {
-            case "speed":
-                ctx.fillStyle = "blue"
-                ctx.fillRect(specialFood[0], specialFood[1], snakeSize, snakeSize)
-                break;
-        }
-    }
+    
 }
 function generateFood() {
     foodPosition = [Math.round(rndNum(0, canvas.width / stepSize)) * stepSize, Math.round(rndNum(0, canvas.height / stepSize)) * stepSize]
     //foodPosition = [0,0]
 }
-function generateSpecialFood() {
-    specialFood = [Math.round(rndNum(0, canvas.width / stepSize)) * stepSize, Math.round(rndNum(0, canvas.height / stepSize)) * stepSize, randomFromArray(specialFoods)]
-}
+
 function die(dieCode) {
     inGame = false
     let reason = ""
@@ -136,7 +116,6 @@ function start() {
     points.innerText = 0
     snake = [[stepSize * 7, stepSize * 7], [stepSize * 7, stepSize * 7], [stepSize * 7, stepSize * 7]]
     generateFood()
-    generateSpecialFood()
     inGame = true
     clearInterval(timeing)
     timeing = setInterval(game, timeBetweenUpdates);
@@ -163,14 +142,7 @@ function changeGameSpeed(speed) {
 function game() {
     if (!inGame) return;
     if (effect) applyEffect();
-    specialFoodRespawnTime--
-    if (!specialFoodRespawnTime) {
-        generateSpecialFood()
-        specialFoodRespawnTime = originalSpecialFoodRespavnTime;
-    }
-    specialFoodRespawnDisplay.innerText = specialFoodRespawnTime;
-
-
+    
 
     // clear screen
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -179,9 +151,7 @@ function game() {
     spawnFood()
     if (foodPosition[0] - (snakeSize / 2) < snake[0][0] && snake[0][0] < foodPosition[0] + (snakeSize / 2) && foodPosition[1] - (snakeSize / 2) < snake[0][1] && snake[0][1] < foodPosition[1] + (snakeSize / 2)) eat("apple");
 
-    // specialFood
-    if (specialFood[0] - (snakeSize / 2) < snake[0][0] && snake[0][0] < specialFood[0] + (snakeSize / 2) && specialFood[1] - (snakeSize / 2) < snake[0][1] && snake[0][1] < specialFood[1] + (snakeSize / 2)) eat(specialFood[2]);
-
+    
 
     //head to direction
     move(direction)
